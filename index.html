@@ -9,39 +9,41 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #e0ecf8, #ffffff);
+            background: linear-gradient(135deg, #1e144f, #320e3b);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #2c3e50;
+            min-height: 100vh;
+            color: #eaeaea;
         }
         .container {
             text-align: center;
-            padding: 3rem;
-            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            max-width: 600px;
-            width: 90%;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 95%;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 1.5rem;
         }
         h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
         }
         h2 {
             font-weight: normal;
             font-size: 1.2rem;
-            color: #6c757d;
+            color: #ccc;
             margin-bottom: 2rem;
         }
-        .cta {
-            margin-top: 1rem;
-        }
         a.button {
+            display: inline-block;
+            margin-top: 1rem;
             text-decoration: none;
-            background-color: #004085;
+            background-color: #7f5af0;
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
@@ -49,23 +51,55 @@
             transition: background 0.3s ease;
         }
         a.button:hover {
-            background-color: #002f5f;
+            background-color: #6244c5;
+        }
+        .form {
+            margin-top: 2rem;
+        }
+        .form input, .form textarea {
+            width: 80%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 6px;
+            border: none;
+        }
+        .reviews {
+            margin-top: 3rem;
+        }
+        iframe {
+            border-radius: 12px;
+            width: 100%;
+            height: 300px;
         }
         footer {
             margin-top: 2rem;
             font-size: 0.9rem;
-            color: #999;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
 <div class="container">
+    <img src="assets/klarity.png" alt="Klarity Clinic Logo" class="logo" />
     <h1>Klarity Clinic</h1>
     <h2>Transformative care for those ready to reclaim their lives</h2>
     <p>Our new website is launching soon. Klarity Clinic provides advanced ketamine-assisted therapy and wellness care in a private, luxury setting.</p>
 
-    <div class="cta">
-        <a class="button" href="mailto:info@klarityclinic.com">Contact Us</a>
+    <a class="button" href="mailto:info@klarityclinic.com">Email Us</a>
+
+    <div class="form">
+        <h2>Request Information</h2>
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+            <input type="text" name="name" placeholder="Your name" required /><br/>
+            <input type="email" name="_replyto" placeholder="Your email" required /><br/>
+            <textarea name="message" placeholder="Your message" rows="5"></textarea><br/>
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+
+    <div class="reviews">
+        <h2>What Our Clients Say</h2>
+        <iframe src="https://search.google.com/local/reviews?placeid=ChIJZ2XG8vbt3IARoCeaZjkZ_YA" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <footer>
