@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,71 +12,75 @@
             padding: 0;
             font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
             background: linear-gradient(135deg, #1e144f, #320e3b);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             color: #eaeaea;
         }
         .container {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
             max-width: 800px;
-            width: 95%;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            text-align: center;
         }
         .logo {
-            max-width: 200px;
+            max-width: 160px;
             margin-bottom: 1.5rem;
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
         }
         h2 {
-            font-weight: normal;
+            font-weight: 400;
             font-size: 1.2rem;
             color: #ccc;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
-        a.button {
-            display: inline-block;
-            margin-top: 1rem;
-            text-decoration: none;
+        a.button, .form button {
             background-color: #7f5af0;
             color: white;
             padding: 0.75rem 1.5rem;
+            border: none;
             border-radius: 8px;
             font-weight: 500;
-            transition: background 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 1rem;
         }
-        a.button:hover {
+        a.button:hover, .form button:hover {
             background-color: #6244c5;
         }
         .form {
             margin-top: 2rem;
         }
         .form input, .form textarea {
-            width: 80%;
-            padding: 0.5rem;
-            margin: 0.5rem 0;
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
             border-radius: 6px;
             border: none;
+            font-size: 1rem;
         }
         .reviews {
             margin-top: 3rem;
+            text-align: left;
         }
-        iframe {
+        .testimonial {
+            background: rgba(255,255,255,0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #7f5af0;
             border-radius: 12px;
-            width: 100%;
-            height: 300px;
+        }
+        .testimonial footer {
+            text-align: right;
+            color: #aaa;
+            font-size: 0.9rem;
         }
         footer {
-            margin-top: 2rem;
+            margin-top: 3rem;
             font-size: 0.9rem;
             color: #aaa;
+            text-align: center;
         }
     </style>
 </head>
@@ -90,34 +96,31 @@
     <div class="form">
         <h2>Request Information</h2>
         <form action="https://formspree.io/f/your-form-id" method="POST">
-            <input type="text" name="name" placeholder="Your name" required /><br/>
-            <input type="email" name="_replyto" placeholder="Your email" required /><br/>
-            <textarea name="message" placeholder="Your message" rows="5"></textarea><br/>
-            <button type="submit" class="button">Submit</button>
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="_replyto" placeholder="Your email" required />
+            <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+            <button type="submit">Submit</button>
         </form>
     </div>
 
     <div class="reviews">
         <h2>What Our Clients Say</h2>
 
-        <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; text-align: left; padding: 1rem;">
-            <div style="max-width: 600px; background: rgba(255,255,255,0.05); padding: 1rem 1.5rem; border-radius: 12px; border-left: 4px solid #7f5af0;">
-                <p style="font-size: 1.05rem; line-height: 1.5;">“The staff at Klarity Clinic are amazing. I felt supported every step of the way and the results were beyond my expectations.”</p>
-                <footer style="text-align: right; color: #aaa;">— Jessica T.</footer>
-            </div>
+        <div class="testimonial">
+            <p>“The staff at Klarity Clinic are amazing. I felt supported every step of the way and the results were beyond my expectations.”</p>
+            <footer>— Jessica T.</footer>
+        </div>
 
-            <div style="max-width: 600px; background: rgba(255,255,255,0.05); padding: 1rem 1.5rem; border-radius: 12px; border-left: 4px solid #7f5af0;">
-                <p style="font-size: 1.05rem; line-height: 1.5;">“Professional, discreet, and deeply transformative. Klarity changed my life. Worth every mile I flew to get here.”</p>
-                <footer style="text-align: right; color: #aaa;">— Michael R.</footer>
-            </div>
+        <div class="testimonial">
+            <p>“Professional, discreet, and deeply transformative. Klarity changed my life. Worth every mile I flew to get here.”</p>
+            <footer>— Michael R.</footer>
+        </div>
 
-            <div style="max-width: 600px; background: rgba(255,255,255,0.05); padding: 1rem 1.5rem; border-radius: 12px; border-left: 4px solid #7f5af0;">
-                <p style="font-size: 1.05rem; line-height: 1.5;">“The wellness house is serene and elegant. It's not just a treatment — it’s a total reset.”</p>
-                <footer style="text-align: right; color: #aaa;">— Lauren M.</footer>
-            </div>
+        <div class="testimonial">
+            <p>“The wellness house is serene and elegant. It's not just a treatment — it’s a total reset.”</p>
+            <footer>— Lauren M.</footer>
         </div>
     </div>
-
 
     <footer>
         Klarity Clinic | Las Vegas & California<br/>
