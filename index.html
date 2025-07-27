@@ -3,26 +3,39 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Klarity Clinic Intake</title>
+    <title>Klarity Clinic</title>
     <style>
         body {
             margin: 0; padding: 0;
             font-family: 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #1e144f, #320e3b);
             color: #eaeaea;
-            display: flex; align-items: center; justify-content: center;
-            height: 100vh;
-            text-align: center;
         }
         .container {
-            max-width: 480px;
-            padding: 2rem;
-            background: rgba(0,0,0,0.4);
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            text-align: center;
         }
-        .logo { max-width: 160px; margin-bottom: 1rem; }
-        h1 { margin-bottom: 1rem; font-size: 1.8rem; }
+        .logo { max-width: 140px; margin-bottom: 1rem; }
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        p { margin: 0.5rem 0; }
+        .banner {
+            background: #7f5af0;
+            color: #fff;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+        .contact, .reviews { margin-top: 2rem; text-align: left; }
+        .contact p { margin: 0.25rem 0; }
+        .map {
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
         select, button {
             width: 100%;
             padding: 0.75rem;
@@ -32,21 +45,64 @@
             font-size: 1rem;
         }
         select {
-            background: #fff; color: #2c3e50;
+            background: #fff;
+            color: #2c3e50;
         }
         button {
-            background: #7f5af0; color: #fff;
+            background: #7f5af0;
+            color: #fff;
             cursor: pointer;
             transition: background 0.3s;
         }
         button:hover {
             background: #6244c5;
         }
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #7f5af0;
+            border-radius: 6px;
+        }
+        .testimonial footer {
+            text-align: right;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <img src="assets/klarity.png" alt="Klarity Clinic Logo" class="logo" />
+    <div class="banner">Our new site is coming soon!</div>
+    <h1>Contact Klarity Clinic</h1>
+    <div class="contact">
+        <p>📞 Phone: (123) 456-7890</p>
+        <p>✉️ Email: info@klarityclinic.com</p>
+    </div>
+    <div class="map">
+        <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.1234567890123!2d-115.17281608468168!3d36.1146478791406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8bd8b7eef1234%3A0x123456abcdef7890!2sKlarity%20Clinic!5e0!3m2!1sen!2sus!4v1620000000000"
+                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+
+    <div class="reviews">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial">
+            <p>“Life-changing care—Klarity’s team supported me every step of the way.”</p>
+            <footer>— Jessica T.</footer>
+        </div>
+        <div class="testimonial">
+            <p>“Professional, discreet, and transformative. Highly recommend.”</p>
+            <footer>— Michael R.</footer>
+        </div>
+        <div class="testimonial">
+            <p>“The wellness house experience was serene and healing.”</p>
+            <footer>— Lauren M.</footer>
+        </div>
+    </div>
+
     <h1>Select Your Questionnaire</h1>
     <select id="formSelect">
         <option value="">-- Choose a form --</option>
@@ -62,7 +118,6 @@
     document.getElementById('goBtn').addEventListener('click', () => {
         const sel = document.getElementById('formSelect').value;
         if (sel) {
-            // navigate to forms.html with query param
             window.location.href = `forms.html?form=${encodeURIComponent(sel)}`;
         }
     });
