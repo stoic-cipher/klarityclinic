@@ -17,8 +17,14 @@
             padding: 2rem 1rem;
             text-align: center;
         }
-        .logo { max-width: 140px; margin-bottom: 1rem; }
-        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .logo {
+            max-width: 140px;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
         p { margin: 0.5rem 0; }
         .banner {
             background: #7f5af0;
@@ -28,13 +34,41 @@
             margin-bottom: 1.5rem;
             font-weight: bold;
         }
-        .contact, .reviews { margin-top: 2rem; text-align: left; }
-        .contact p { margin: 0.25rem 0; }
-        .map {
+        .contact {
+            margin-bottom: 1.5rem;
+        }
+        .contact p {
+            margin: 0.25rem 0;
+        }
+        .gmb-button {
+            display: inline-block;
             margin: 1rem 0;
+            padding: 0.75rem 1.5rem;
+            background: #fff;
+            color: #1e144f;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .gmb-button:hover {
+            background: #f0f0f0;
+        }
+        .reviews {
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #7f5af0;
+            border-radius: 6px;
+        }
+        .testimonial footer {
+            text-align: right;
+            color: #ccc;
+            font-size: 0.9rem;
         }
         select, button {
             width: 100%;
@@ -57,17 +91,16 @@
         button:hover {
             background: #6244c5;
         }
-        .testimonial {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid #7f5af0;
-            border-radius: 6px;
-        }
-        .testimonial footer {
-            text-align: right;
-            color: #ccc;
+        footer.site-footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
             font-size: 0.9rem;
+            color: #aaa;
+        }
+        footer.site-footer a {
+            color: #7f5af0;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -75,17 +108,16 @@
 <div class="container">
     <img src="assets/klarity.png" alt="Klarity Clinic Logo" class="logo" />
     <div class="banner">Our new site is coming soon!</div>
+
     <h1>Contact Klarity Clinic</h1>
     <div class="contact">
-        <p>📞 Phone: (123) 456-7890</p>
-        <p>✉️ Email: info@klarityclinic.com</p>
+        <p>📞 (844) 552-7489</p>
+        <p>✉️ info@klarityclinic.com</p>
     </div>
-    <div class="map">
-        <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.1234567890123!2d-115.17281608468168!3d36.1146478791406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8bd8b7eef1234%3A0x123456abcdef7890!2sKlarity%20Clinic!5e0!3m2!1sen!2sus!4v1620000000000"
-                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
-    </div>
+
+    <a href="https://g.page/klarityclinic?share" target="_blank" class="gmb-button">
+        Visit Us on Google
+    </a>
 
     <div class="reviews">
         <h2>What Our Clients Say</h2>
@@ -122,5 +154,11 @@
         }
     });
 </script>
+
+<footer class="site-footer">
+    <p>Klarity Clinic &bull; Las Vegas & California</p>
+    <p>&copy; 2025 Klarity Clinic. All rights reserved.</p>
+    <p><a href="https://www.klarityclinic.com/privacy-policy" target="_blank">Privacy Policy</a></p>
+</footer>
 </body>
 </html>
