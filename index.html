@@ -1,18 +1,16 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Klarity Clinic | Transformational Care</title>
+    <title>Klarity Clinic Intake Forms</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #1e144f, #320e3b);
-            color: #eaeaea;
+            background: linear-gradient(135deg, #e0ecf8, #ffffff);
+            color: #2c3e50;
         }
         .container {
             max-width: 800px;
@@ -21,111 +19,70 @@
             text-align: center;
         }
         .logo {
-            max-width: 160px;
-            margin-bottom: 1.5rem;
+            max-width: 180px;
+            margin: 0 auto 1.5rem;
         }
         h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
-        h2 {
-            font-weight: 400;
-            font-size: 1.2rem;
-            color: #ccc;
-            margin-bottom: 1.5rem;
-        }
-        a.button, .form button {
-            background-color: #7f5af0;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            display: inline-block;
+        label, select {
+            font-size: 1rem;
             margin-top: 1rem;
         }
-        a.button:hover, .form button:hover {
-            background-color: #6244c5;
-        }
-        .form {
-            margin-top: 2rem;
-        }
-        .form input, .form textarea {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
+        select {
+            padding: 0.5rem;
             border-radius: 6px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 400px;
+        }
+        iframe {
+            width: 100%;
             border: none;
-            font-size: 1rem;
-        }
-        .reviews {
-            margin-top: 3rem;
-            text-align: left;
-        }
-        .testimonial {
-            background: rgba(255,255,255,0.06);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #7f5af0;
-            border-radius: 12px;
-        }
-        .testimonial footer {
-            text-align: right;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        footer {
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: #aaa;
-            text-align: center;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
 <div class="container">
     <img src="assets/klarity.png" alt="Klarity Clinic Logo" class="logo" />
-    <h1>Klarity Clinic</h1>
-    <h2>Transformative care for those ready to reclaim their lives</h2>
-    <p>Our new website is launching soon. Klarity Clinic provides advanced ketamine-assisted therapy and wellness care in a private, luxury setting.</p>
+    <h1>Patient Intake Questionnaires</h1>
+    <p>Please select the form that applies to you:</p>
+    <label for="formSelector">Choose a questionnaire:</label><br/>
+    <select id="formSelector">
+        <option value="">-- Select --</option>
+        <option value="https://form.jotform.com/252068621265052">Chronic Pain Questionnaire</option>
+        <option value="https://form.jotform.com/252068838103053">Depression Questionnaire</option>
+        <option value="https://form.jotform.com/252068965057062">Drug & Alcohol Abuse Questionnaire</option>
+        <option value="https://form.jotform.com/252068694967071">NAD+/IV Nutrient Therapy Questionnaire</option>
+    </select>
 
-    <a class="button" href="mailto:info@klarityclinic.com">Email Us</a>
-
-    <div class="form">
-        <h2>Request Information</h2>
-        <form action="https://formspree.io/f/your-form-id" method="POST">
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="email" name="_replyto" placeholder="Your email" required />
-            <textarea name="message" placeholder="Your message" rows="5" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
-    <div class="reviews">
-        <h2>What Our Clients Say</h2>
-
-        <div class="testimonial">
-            <p>“The staff at Klarity Clinic are amazing. I felt supported every step of the way and the results were beyond my expectations.”</p>
-            <footer>— Jessica T.</footer>
-        </div>
-
-        <div class="testimonial">
-            <p>“Professional, discreet, and deeply transformative. Klarity changed my life. Worth every mile I flew to get here.”</p>
-            <footer>— Michael R.</footer>
-        </div>
-
-        <div class="testimonial">
-            <p>“The wellness house is serene and elegant. It's not just a treatment — it’s a total reset.”</p>
-            <footer>— Lauren M.</footer>
-        </div>
-    </div>
-
-    <footer>
-        Klarity Clinic | Las Vegas & California<br/>
-        &copy; 2025 Klarity Clinic. All rights reserved.
-    </footer>
+    <iframe
+            id="questionnaireFrame"
+            title="Patient Intake Form"
+            src=""
+            style="min-height:900px;"
+            scrolling="no"
+            onload="window.parent.scrollTo(0,0)"
+            allow="geolocation; microphone; camera; fullscreen"
+    ></iframe>
 </div>
+
+<script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+<script>
+    const selector = document.getElementById('formSelector');
+    const frame = document.getElementById('questionnaireFrame');
+    selector.addEventListener('change', function() {
+        const url = this.value;
+        if (url) {
+            frame.src = url;
+        } else {
+            frame.src = '';
+        }
+    });
+</script>
 </body>
 </html>
