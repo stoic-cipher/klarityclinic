@@ -5,35 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Klarity Clinic Form</title>
     <style>
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1e144f, #320e3b);
-            color: #eaeaea;
+        body { margin:0; padding:0; font-family:'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg,#1e144f,#320e3b); color:#eaeaea;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-            text-align: center;
+        .container { max-width:900px; margin:0 auto; padding:2rem 1rem; text-align:center; }
+        .logo { max-width:140px; margin-bottom:1rem; }
+        h1 { font-size:1.5rem; margin-bottom:.5rem; }
+        select { padding:.5rem; border:none; border-radius:6px;
+            width:80%; max-width:300px; margin-bottom:1rem; font-size:1rem;
         }
-        .logo { max-width: 140px; margin-bottom: 1rem; }
-        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        select {
-            padding: 0.5rem;
-            border-radius: 6px;
-            border: none;
-            width: 80%;
-            max-width: 300px;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-        iframe {
-            width: 100%;
-            height: 900px;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        iframe { width:100%; border:none; border-radius:8px;
+            box-shadow:0 8px 24px rgba(0,0,0,0.4); margin-top:1rem;
         }
     </style>
 </head>
@@ -47,43 +29,43 @@
         <option value="drug-alcohol">Drug & Alcohol Abuse</option>
         <option value="nad-iv">NAD+/IV Nutrient Therapy</option>
     </select>
-    <iframe id="formFrame" scrolling="no" allow="geolocation; microphone; camera; fullscreen"></iframe>
+
+    <div id="iframeWrapper">
+        <!-- iframe will be injected here -->
+    </div>
 </div>
 
-<script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
 <script>
     const mapping = {
-        "chronic-pain": "https://form.jotform.com/252068621265052",
-        "depression":   "https://form.jotform.com/252068838103053",
-        "drug-alcohol":"https://form.jotform.com/252068965057062",
-        "nad-iv":       "https://form.jotform.com/252068694967071"
+        "chronic-pain": `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfP3XtqaUTD8EB8KQds5WU2AVfqlpzWyBuotvynTvpolQPS8A/viewform?embedded=true" width="100%" height="6991" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
+        "depression": `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScWcB66ncVW3mCY4u_t72dobUUVmxNx94MmxJwtFN73EKOBAw/viewform?embedded=true" width="100%" height="7544" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
+        "drug-alcohol": `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeZlOOruuw4jOFKM98QllyI3redn8jS5GhnGjl9HHI1zpQXBQ/viewform?embedded=true" width="100%" height="7027" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
+        "nad-iv": `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfdZild-YhWR4sZV3jlsQGW0KaOXMWzhVguHE9HK0dDBPX89g/viewform?embedded=true" width="100%" height="6173" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
     };
     const titles = {
         "chronic-pain": "Chronic Pain Questionnaire",
-        "depression":   "Depression Questionnaire",
-        "drug-alcohol":"Drug & Alcohol Abuse Questionnaire",
-        "nad-iv":       "NAD+/IV Nutrient Therapy Questionnaire"
+        "depression": "Depression Questionnaire",
+        "drug-alcohol": "Drug & Alcohol Abuse Questionnaire",
+        "nad-iv": "NAD+/IV Nutrient Therapy Questionnaire"
     };
 
     const select = document.getElementById('formSelect');
-    const frame = document.getElementById('formFrame');
-    const title = document.getElementById('formTitle');
+    const wrapper = document.getElementById('iframeWrapper');
+    const titleEl = document.getElementById('formTitle');
 
     function loadForm(key) {
-        if (!mapping[key]) return;
-        title.textContent = titles[key];
-        frame.src = mapping[key];
-        // re-init auto-resize
-        window.jotformEmbedHandler(`iframe[id='formFrame']`, "https://form.jotform.com/");
+        titleEl.textContent = titles[key] || "";
+        wrapper.innerHTML = mapping[key] || "";
     }
 
-    // On dropdown change
+    // Handle dropdown change
     select.addEventListener('change', e => {
-        loadForm(e.target.value);
-        history.replaceState(null, "", `forms.html?form=${encodeURIComponent(e.target.value)}`);
+        const val = e.target.value;
+        loadForm(val);
+        history.replaceState(null, "", `forms.html?form=${encodeURIComponent(val)}`);
     });
 
-    // On page load, read ?form= query param
+    // On page load, read query param
     const params = new URLSearchParams(location.search);
     const initial = params.get('form') || "chronic-pain";
     select.value = initial;
