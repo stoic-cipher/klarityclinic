@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <title>Klarity Clinic</title>
     <style>
         body { margin:0; padding:0; font-family:'Segoe UI',Roboto,sans-serif;
@@ -48,7 +49,7 @@
     <h1>Contact Klarity Clinic</h1>
     <div class="contact">
         <p>📞 (844) 552-7489</p>
-        <p>✉️ info@klarityclinic.com</p>
+        <p>✉️ records@klarityclinic.com</p>
     </div>
 
     <a href="https://g.page/klarityclinic?share" target="_blank" class="gmb-button">
@@ -97,27 +98,27 @@
             "nad-iv":       "NAD+/IV Nutrient Therapy Questionnaire"
         },
         "southern-california": {
-            "nad-iv":       "NAD+/IV Nutrient Therapy Questionnaire",
             "chronic-pain": "Chronic Pain Questionnaire",
+            "depression":   "Depression Questionnaire",
             "drug-alcohol": "Drug & Alcohol Abuse Questionnaire",
-            "depression":   "Depression Questionnaire"
+            "nad-iv":       "NAD+/IV Nutrient Therapy Questionnaire"
         }
     };
 
-    const locSelect = document.getElementById('locationSelect');
+    const locSelect  = document.getElementById('locationSelect');
     const formSelect = document.getElementById('formSelect');
-    const goBtn = document.getElementById('goBtn');
+    const goBtn      = document.getElementById('goBtn');
 
     locSelect.addEventListener('change', () => {
         const loc = locSelect.value;
         formSelect.innerHTML = '<option value="">-- Select Form --</option>';
         if (formsByLocation[loc]) {
-            Object.entries(formsByLocation[loc]).forEach(([key, label]) => {
+            for (const [key, label] of Object.entries(formsByLocation[loc])) {
                 const opt = document.createElement('option');
                 opt.value = key;
                 opt.textContent = label;
                 formSelect.appendChild(opt);
-            });
+            }
             formSelect.disabled = false;
         } else {
             formSelect.disabled = true;
@@ -130,7 +131,8 @@
     });
 
     goBtn.addEventListener('click', () => {
-        const loc = locSelect.value, form = formSelect.value;
+        const loc  = locSelect.value;
+        const form = formSelect.value;
         if (loc && form) {
             window.location.href = `forms.html?loc=${encodeURIComponent(loc)}&form=${encodeURIComponent(form)}`;
         }
@@ -140,7 +142,7 @@
 <footer class="site-footer">
     <p>Klarity Clinic • Las Vegas & California</p>
     <p>&copy; 2025 Klarity Clinic. All rights reserved.</p>
-    <p><a href="https://www.klarityclinic.com/privacy-policy" target="_blank">Privacy Policy</a></p>
+    <p><a href="privacy-policy.html" target="_blank">Privacy Policy</a></p>
 </footer>
 </body>
 </html>
