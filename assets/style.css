@@ -1,0 +1,102 @@
+/* assets/style.css */
+
+/* Reset & base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    background: linear-gradient(135deg, #1e144f, #320e3b);
+    color: #eaeaea;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    max-width: 140px;
+    margin-bottom: 1rem;
+}
+
+/* Banner */
+.banner {
+    background: #7f5af0;
+    color: #fff;
+    padding: .75rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* Contact & reviews */
+.contact p,
+.testimonial footer {
+    color: #ccc;
+}
+.gmb-button {
+    display: inline-block;
+    margin: 1rem 0;
+    padding: .75rem 1.5rem;
+    background: #fff;
+    color: #1e144f;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background .3s;
+}
+.gmb-button:hover { background: #f0f0f0; }
+
+/* Dropdowns & buttons */
+label { display: block; margin-top: 1rem; font-weight: 500; }
+select, button {
+    width: 100%;
+    padding: .75rem;
+    margin-top: .5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+select { background: #fff; color: #2c3e50; }
+button {
+    background: #7f5af0;
+    color: #fff;
+    cursor: pointer;
+    transition: background .3s;
+}
+button:hover { background: #6244c5; }
+
+/* Testimonials */
+.reviews { margin-top: 2rem; text-align: left; }
+.testimonial {
+    background: rgba(255,255,255,0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #7f5af0;
+    border-radius: 6px;
+}
+
+/* Footer */
+footer.site-footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: .9rem;
+    color: #aaa;
+    text-align: center;
+}
+footer.site-footer a { color: #7f5af0; text-decoration: none; }
+
+/* Forms page specifics */
+#iframeWrapper iframe {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    margin-top: 1rem;
+}
