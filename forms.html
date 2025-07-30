@@ -32,16 +32,19 @@
 </div>
 
 <script>
+    // mapping[location][formKey] = Google Forms embed HTML
     const mapping = {
         "las-vegas": {
             "chronic-pain": `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfP3XtqaUTD8EB8KQds5WU2AVfqlpzWyBuotvynTvpolQPS8A/viewform?embedded=true" width="100%" height="6991" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
-            "depression":   `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScWcB66ncVW3mCY4u_t72dobUUVmxNx94MmxJwtFN73EKOBAw/viewform?embedded=true" width="100%" height="7544" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
+            "depression":   `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScWcB66ncVW3mCY4u_t72dobUUVmxNx94MmxJwtFN73EKOBAw/viewform?embedded=true" width="100%" height="7544" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
+            "drug-alcohol": `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeZlOOruuw4jOFKM98QllyI3redn8jS5GhnGjl9HHI1zpQXBQ/viewform?embedded=true" width="100%" height="7027" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
+            "nad-iv":       `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfdZild-YhWR4sZV3jlsQGW0KaOXMWzhVguHE9HK0dDBPX89g/viewform?embedded=true" width="100%" height="6173" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
         },
         "southern-california": {
-            "nad-iv":       `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdMEU6NMJqqzl6kRMwxjXFP2B8wcpyzjLmHw3FBJfzHOXQ2Ow/viewform?embedded=true" width="100%" height="6208" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
             "chronic-pain": `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgOP1ws3zPiPyPSWYuIR47VAojtrCE4A4XjKFiqyt7labE1g/viewform?embedded=true" width="100%" height="7034" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
+            "depression":   `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfpg7M6bPFbURhaIvgzMkH0CRlm7x9bbthTRCm-HWkHOL6geg/viewform?embedded=true" width="100%" height="7070" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
             "drug-alcohol": `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfpg7M6bPFbURhaIvgzMkH0CRlm7x9bbthTRCm-HWkHOL6geg/viewform?embedded=true" width="100%" height="7070" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
-            "depression":   `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfpg7M6bPFbURhaIvgzMkH0CRlm7x9bbthTRCm-HWkHOL6geg/viewform?embedded=true" width="100%" height="7070" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
+            "nad-iv":       `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdMEU6NMJqqzl6kRMwxjXFP2B8wcpyzjLmHw3FBJfzHOXQ2Ow/viewform?embedded=true" width="100%" height="6208" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
         }
     };
 
@@ -52,30 +55,32 @@
         "nad-iv":"NAD+/IV Nutrient Therapy Questionnaire"
     };
 
+    // Read URL params
     const params = new URLSearchParams(location.search);
     const loc = params.get('loc') || "las-vegas";
     const formKey = params.get('form');
 
+    // Populate dropdown
     const formSelect = document.getElementById('formSelect');
-    const iframeWrapper = document.getElementById('iframeWrapper');
-    const titleEl = document.getElementById('formTitle');
-
-    // Populate form dropdown
-    Object.entries(mapping[loc]).forEach(([key, html]) => {
+    Object.keys(mapping[loc]).forEach(key => {
         const opt = document.createElement('option');
         opt.value = key;
         opt.textContent = labels[key];
         formSelect.appendChild(opt);
     });
 
+    // Load function
+    const iframeWrapper = document.getElementById('iframeWrapper');
+    const titleEl = document.getElementById('formTitle');
     function loadForm(key) {
         titleEl.textContent = labels[key] || "";
         iframeWrapper.innerHTML = mapping[loc][key] || "";
     }
 
+    // On change
     formSelect.addEventListener('change', e => loadForm(e.target.value));
 
-    // Initialize selection
+    // Initialize
     if (formKey && mapping[loc][formKey]) {
         formSelect.value = formKey;
     } else {
