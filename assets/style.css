@@ -126,3 +126,7 @@ footer.site-footer a { color: #7f5af0; text-decoration: none; }
     margin-bottom: 1rem;
     line-height: 1.6;
 }
+/* Only for Privacy Policy page */
+.policy-page .container {
+    text-align: left;
+}
