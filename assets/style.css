@@ -100,3 +100,29 @@ footer.site-footer a { color: #7f5af0; text-decoration: none; }
     box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     margin-top: 1rem;
 }
+/* Make list items match the light text and add some spacing */
+.container ul {
+    margin-left: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.container ul li {
+    color: #eaeaea;
+    margin-bottom: 0.5rem;
+    list-style: disc;
+}
+
+/* Headings in container should be bright white */
+.container h1,
+.container h2,
+.container h3 {
+    color: #ffffff;
+    margin-top: 1.5rem;
+}
+
+/* Paragraph text */
+.container p {
+    color: #eaeaea;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
