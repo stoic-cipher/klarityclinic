@@ -129,3 +129,24 @@ footer.site-footer a { color: #7f5af0; text-decoration: none; }
 .privacy-page .container {
     text-align: left;
 }
+.downloads { margin-top: 2rem; }
+.downloads h2 { margin-bottom: .75rem; }
+.print-note { font-size: .9rem; opacity: .8; margin-top: .5rem; }
+
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+}
+
+.pdf-card {
+    display: block;
+    padding: 14px 16px;
+    border: 1px solid #e8e8ee;
+    border-radius: 10px;
+    background: #fafbff;
+    text-decoration: none;
+}
+.pdf-card:hover { background: #f0f4ff; border-color: #d7dcff; }
+.pdf-card .title { display:block; font-weight: 600; }
+.pdf-card .meta  { display:block; font-size: .9rem; opacity: .8; }
